@@ -155,9 +155,9 @@ public class Funcoes extends Produto implements FuncoesSistema{
 						
 						if(produto.getStock().element().getQuantidade() == 0) { // Se a quantidade de estoque chegar a 0 então ele remove esse elemento da fila
 							produto.getStock().remove();
-							return produto.toString();
+							return "Quantidade restante do produto id->" + produto.getId() + " nome: " + produto.getNome() + " é: " + produto.getStock();
 						}
-							return produto.toString();  //Mostra o produto e o que ficou no estoque 
+							return "Quantidade restante do produto id->" + produto.getId() + " nome: " + produto.getNome() + " é: " + produto.getStock();  //Mostra o produto e o que ficou no estoque 
 						
 					}else if (som > quant ) { //Se a quantidade  deseja for maior que o disponivel no elemento mas antigo da fila, mas ainda assim existir estoque disponivel pro produto 
 																					//ele vai dimuir até que a quantidade desejada seja abastecida
@@ -176,11 +176,11 @@ public class Funcoes extends Produto implements FuncoesSistema{
 								quant = quant - elemento.getQuantidade() ; //subtrai o valor que foi removido, e continua o loop ate que a quantidade seja 0
 							}
 						}
-							return produto.toString(); //Retorna as informaçoes do produto e a quantidade que ficou
+							return "Quantidade restante do produto id->" + produto.getId() + " nome: " +  produto.getNome() + " é: " + produto.getStock();  //Retorna as informaçoes do produto e a quantidade que ficou
 					
 					}else {
 								//Caso o estoque nao for suficiente pergunta se quer retirar o que há disponivel 
-							System.out.println("Estoque insuficiente, deseja retirar o disponivel? \n1-Sim | 2-Nao");
+							System.out.println("Estoque insuficiente, deseja retirar o disponivel? (" + som + " produtos)" + "\n1-Sim | 2-Nao");
 							int op = in.nextInt();
 							
 							switch (op) {
@@ -189,7 +189,7 @@ public class Funcoes extends Produto implements FuncoesSistema{
 								while(iter.hasNext()) {
 									produto.getStock().remove();
 								}
-								return produto.toString();
+								return produto.toString() + "\n Quantidade retirada: " + som + " produtos";
 								
 							case 2:
 								menu();
