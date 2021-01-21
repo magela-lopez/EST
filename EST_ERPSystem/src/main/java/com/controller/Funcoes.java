@@ -183,21 +183,25 @@ public class Funcoes extends Produto implements FuncoesSistema{
 							System.out.println("Estoque insuficiente, deseja retirar o disponivel? (" + som + " produtos)" + "\n1-Sim | 2-Nao");
 							int op = in.nextInt();
 							
-							switch (op) {
-							case 1 :
-								Iterator iter = produto.getStock().iterator();
-								while(iter.hasNext()) {
-									produto.getStock().remove();
+							while (op >0) {
+								switch (op) {
+								case 1 :
+									Iterator iter = produto.getStock().iterator();
+									while(iter.hasNext()) {
+										produto.getStock().remove();
+									}
+									return produto.toString() + "\n Quantidade retirada: " + som + " produtos";
+									
+								case 2:
+									menu();
+									break;
+								default:
+									System.out.println("Estoque insuficiente, deseja retirar o disponivel? \n1-Sim | 2-Nao");
+									op = in.nextInt();
+									break;
 								}
-								return produto.toString() + "\n Quantidade retirada: " + som + " produtos";
-								
-							case 2:
-								menu();
-								break;
-							default:
-								System.out.println("Estoque insuficiente, deseja retirar o disponivel? \n1-Sim | 2-Nao");
-								op = in.nextInt();	
 							}
+							
 						}
 					}	
 				}
