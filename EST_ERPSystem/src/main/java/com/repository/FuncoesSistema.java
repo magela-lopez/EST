@@ -1,14 +1,13 @@
 package com.repository;
 
 import java.util.List;
-
 import com.model.Produto;
 
 public interface FuncoesSistema {
 
 	public void menu();
-	public String buscarById();
-	public List<Produto> buscarByName();
-	public String retirarById();
+	public String searchById();
+	public List<Produto> searchByName();
+	public String removeById();
 	
 }

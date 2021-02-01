@@ -2,6 +2,7 @@
 import java.io.IOException;
 
 import com.controller.CarregarProdutos;
+import com.controller.Funcoes;
 
 public class Sistema {
 	
@@ -9,6 +10,7 @@ public class Sistema {
     	
     	CarregarProdutos produtoCsv = new CarregarProdutos();
     	produtoCsv.lerCsv();
+
     }
 }   	
     
