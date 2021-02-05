@@ -9,5 +9,6 @@ public interface FuncoesSistema {
 	public String searchById();
 	public List<Produto> searchByName();
 	public String removeById();
+	public String binarySearch();
 	
 }

@@ -54,6 +54,7 @@ public class Arvore <T>{
 		}
 	}
 	
+	//Funcionalidade 6
 	public String searchTree(Integer id) {
 	    if (root == null) return "Arvore vazia" ; // Verifica se a a raiz está vazia, retorna uma mensagem
 	    

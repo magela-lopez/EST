@@ -20,12 +20,7 @@ public class Produto {
 		this.amountMax = amountMax.contains("prices.amountMax") ? 0.0f : Float.parseFloat(amountMax);
 		this.amountMin = amountMin.contains("prices.amountMin") ? 0.0f : Float.parseFloat(amountMin);
 		this.nome = nome;
-		
-		for (int i =0; i<entradas;i++) {
-			this.quantidade = (int) (Math.random()*100)+1;
-			this.date = addDate(i);
-			this.stock.add(new Estoque (this.quantidade, this.date));
-		}
+		addStock(entradas);
 	}
 
 	public int getId() {
@@ -105,5 +100,20 @@ public class Produto {
 		}
 		return date;
 		
+	}
+	
+	
+	public void addStock(int entradas) {
+		for (int i =0; i<entradas;i++) {
+			
+			if(this.id == 0) {
+				break;
+			}else {
+				this.quantidade = (int) (Math.random()*100)+1;
+				this.date = addDate(i);
+				this.stock.add(new Estoque (this.quantidade, this.date));
+			}
+			
+		}
 	}
 }

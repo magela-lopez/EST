@@ -39,13 +39,14 @@ public class CarregarProdutos {
 	/*-------------------------------------------------------------------------------------------------------------------*/
 	
 
+	//Funcionalidade 1
 	public void lerCsv() throws IOException {
 		
     	CSVReader csvReader = new CSVReader(new FileReader(archCSV));
-    		
+    	
     		while ((this.campo = csvReader.readNext()) != null) {
     			int rnd = (int) (Math.random()*20)+1; 
-    		    this.produtos.add(new Produto (campo[0], campo[1], campo[2], campo[21] , rnd)); 
+    		    this.produtos.add(new Produto (campo[0], campo[1], campo[2], campo[21] , rnd));  
     		}
     		csvReader.close();
     		

@@ -8,7 +8,7 @@ import com.model.Produto;
 import com.repository.FuncoesSistema;
 
 public class Funcoes extends Produto implements FuncoesSistema{
-	
+
 	private List<Produto> produtos;
 	private Arvore<List<Produto>> arv = new Arvore<List<Produto>>();
 
@@ -36,10 +36,12 @@ public class Funcoes extends Produto implements FuncoesSistema{
 
 	/*------------------------------------------------------------Métodos-----------------------------------------------------------------*/
 
+	//Funcionalidade 2
 	@Override
 	public void menu() {
 		// TODO Auto-generated method stub
 		Scanner in = new Scanner (System.in);
+
 		int op;
 		try {
 			System.out.println("================ MENÚ ================\n"
@@ -47,6 +49,7 @@ public class Funcoes extends Produto implements FuncoesSistema{
 					+ "2- Buscar produto por nome\n"
 					+ "3- Retirar Produtos por Código.\n"
 					+ "4- Buscar produto em árvore binária\n"
+					+ "5- Buscar por produtos utilizando busca binária\n"
 					+ "0- Sair");
 			op = in.nextInt();
 			
@@ -77,6 +80,10 @@ public class Funcoes extends Produto implements FuncoesSistema{
 				System.out.println(this.arv.searchTree(id));
 				menu();
 				break;
+			case 5:
+				System.out.println(binarySearch());
+				menu();
+				break;
 			case 0:
 				System.exit(0);
 				break;
@@ -89,6 +96,7 @@ public class Funcoes extends Produto implements FuncoesSistema{
 		}
 	}
 
+	//Funcionalidade 3
 	@Override
 	public String searchById() {
 		// TODO Auto-generated method stub
@@ -114,10 +122,12 @@ public class Funcoes extends Produto implements FuncoesSistema{
 		return null;
 	}
 
+	//Funcionalidade 4
 	@Override
 	public List<Produto> searchByName() {
 		// TODO Auto-generated method stub
 		Scanner in = new Scanner (System.in);
+
 		List<Produto> prodName = new ArrayList<>();
 	
 		String nome;
@@ -133,10 +143,13 @@ public class Funcoes extends Produto implements FuncoesSistema{
 		return prodName;
 	}
 	
+	
+	//Funcionalidade 5
 	@Override
 	public String removeById() {
 	// TODO Auto-generated method stub
-	Scanner in = new Scanner (System.in);
+		Scanner in = new Scanner (System.in);
+
 	int id, quant, som = 0;
 	try {
 		System.out.println("Digite o id do produto"); 
@@ -204,4 +217,42 @@ public class Funcoes extends Produto implements FuncoesSistema{
 		
 	}//Fim metodo
 
+	
+	//Funcionalidade 7
+	@Override
+	public String binarySearch() {
+		// TODO Auto-generated method stub
+		Scanner in = new Scanner (System.in);
+
+		try {
+			System.out.println("Digite o id do Produto");
+			int id = in.nextInt();
+			int menor =0;
+			int maior = produtos.size() -1;
+			int meio = (menor+maior)/2;
+			
+			while (menor <= maior) {
+				meio = (menor+maior)/2;
+				
+				if(produtos.get(meio).getId() == id) {
+					return produtos.get(id).toString();
+				}
+				else if(produtos.get(meio).getId() < id) {
+					menor = meio +1;
+				}else {
+					maior = meio -1;
+				}
+			}
+			
+			return "Produto nao encontrado";
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.err.print("Erro ! Tente novamente, só numeros inteiros.\n");
+			menu();
+		}
+		
+		return null;
+		
+	}
+	
 }
